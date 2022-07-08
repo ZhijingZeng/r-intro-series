@@ -9,3 +9,4 @@ praise()
 my_var <- 3
 
 animals <- c("pig", "goat", "unicorn", "dog", "lion")
+

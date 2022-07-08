@@ -4,32 +4,36 @@
 set.seed(1234) ## keeps the random numbers consistent
 x1 <- rnorm(5)  ## creates a vector with random values in it
 x2 <- rnorm(20, mean=0.5)  ## creates another vector with random values in it
-
+x1
 
 # Select the elements of x1 that are less than 0
-
+x1[x1<0]
 
 # Select the elements of x2 that are greater than 1
-
-
+x2
+x2[x2>1]
 # Select the elements of x1 between 0 and 1
-
+x1[x1>0 & x1<1]
 
 # Compute the mean() of each vector; compare them to see if the mean of x2 is greater than the mean of x1. 
-
-
+mean_x1 = mean(x1)
+mean_x1
+mean_x2 = mean(x2)
+mean_x2
+mean_x2>mean_x1
 # Trim x2 to the first 5 elements (select first 5 and save back to x2)
-
-
+x2=x2[1:5]
+x2
 # Select the last element of x1; hint: use length() to help  
-
+x1[length(x1)]
 
 # Select all but the third and fifth elements of x1
-
+x1
+x1[c(-3,-5)]
 
 # Bonus: Look up the help for runif().  Create another vector with 10 random values between 2 and 3
-
-
+x_unif=runif(10,2,3)
+x_unif
 
 # Vectors 2 ----
 
@@ -43,18 +47,18 @@ x2  # check: did it change?
 x3 <- c(18, 20, 21, 20, 24, NA, 27, 25, 24, NA, 26, 24, 23, 22, NA, 30)
 
 # Replace the third value in x3 with 19
-
+x3[3]<-19
 
 # Select just the values in x3 that are greater than 25 (only values greater than 25 should print)
-
+x3[x3>25 & !is.na(x3)]
 
 # Select just the missing values from x3.  Remember: is.na() - there are also some hints below
-
+x3[is.na(x3)]
 
 # Replace the missing values with 0 - see hint below 
 
-
-
+x3[is.na(x3)]=0
+x3
 # Missing values ----
 
 # Missing Values Mini-Lesson:
@@ -77,7 +81,7 @@ animals <- sample(c("pig", "cow", "horse", "duck", NA), 30, replace=TRUE)
 
 # what did the above do?  investigate animals by displaying/printing the contents and 
 # getting the length
-
+animals
 
 # make a table of animals to show counts of each type
 # hint: option for showing missing was useNA="ifany"

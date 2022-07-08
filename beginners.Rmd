@@ -327,7 +327,8 @@ Learn more about [R Markdown](https://rmarkdown.rstudio.com/).
 Vectors hold multiple values (all of the same type).  Create a vector with the `c()` function:
 ```{r}
 x <- c(1, 4, 6, 3, 4, 2, 3, 4)
-x
+x[-1:-2]
+length(x)
 ```
 
 ## Accessing the Elements
@@ -424,6 +425,7 @@ Run the code below to create the vector called y.  Then write an expression to s
 
 ```{r}
 y <- runif(20) # creates 20 random numbers
+y[y<0.2]
 ```
 
 Bonus: Round the result of your expression above so that each value prints to 2 decimal places only.
