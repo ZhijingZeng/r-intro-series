@@ -151,6 +151,8 @@ Compute group means of `body_mass_g` by `sex` with `tapply()` and `aggregate()`.
 Use `tapply()`
 
 ```{r}
+tapply(penguins$body_mass_g,penguins$sex,mean,na.rm=TRUE)
+
 
 
 ```
@@ -158,7 +160,8 @@ Use `tapply()`
 Use `aggregate()`
 
 ```{r}
-
+aggregate(penguins$body_mass_g,list(penguins$sex),mean,na.rm=TRUE)
+aggregate(body_mass_g~sex,data=penguins,mean,na.rm=TRUE)
 
 ```
 
@@ -224,9 +227,10 @@ Or we could do it manually here for practice subsetting data!
 Compute the correlation between `bill_length_mm` and `bill_depth_mm` for each of the three species ("Adelie", "Chinstrap", "Gentoo") separately (remember to run code above to load libraries and data): 
 
 ```{r, eval=FALSE}
-cor(___, ___, use = "pairwise")
-cor(___, ___, use = "pairwise")
-cor(___, ___, use = "pairwise")
+cor(penguins$bill_depth_mm[penguins$species == 'Adelie'], penguins$bill_length_mm[penguins$species == 'Adelie'], use = "pairwise")
+cor(penguins$bill_depth_mm[penguins$species == 'Chinstrap'], penguins$bill_length_mm[penguins$species == 'Cinstrap'], use = "pairwise")
+cor(penguins$bill_depth_mm[penguins$species == 'Gentoo'], penguins$bill_length_mm[penguins$species == 'Gentoo'], use = "pairwise")
+table(penguins$species)
 ```
 
 
@@ -282,6 +286,7 @@ Using the `ames` data, do `single_family` homes have greater `sf` (square footag
 Hint: `single_family` is a variable we created above that has TRUE/FALSE values (so two groups).
 
 ```{r}
+t.test(ames$sf ~ ames$single_family)
 
 ```
 
@@ -391,6 +396,8 @@ summary(reg1)$coefficients
 Run a linear regression model with the dependent (y, outcome) variable of `sf` (square footage), and independent (x, predictor) variables of `lot_area` and `tot_rms_abv_grd`.  Print the summary of the model.
 
 ```{r}
+lin<-lm(sf~lot_area+tot_rms_abv_grd,data=ames)
+lin
 
 ```
 
@@ -401,6 +408,8 @@ Run a linear regression model with the dependent (y, outcome) variable of `sf` (
 
 ```{r}
 table(ames$house_style)
+class(ames$house_style)
+
 ```
 
 What if we put `house_style` into our regression?
@@ -456,7 +465,8 @@ summary(reg4)
 Run a linear regression model to predict `sf` (square footage) using `lot_area`, `tot_rms_abv_grd`, and an interaction between `fence` and `garage_type`.  (Yes, this is a fairly nonsensical model :) )
 
 ```{r}
-
+ll<-lm(sf~lot_area+tot_rms_abv_grd+fence*garage_type,data=ames)
+summary(ll)
 ```
 
 # Logistic Regression
