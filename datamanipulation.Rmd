@@ -502,6 +502,7 @@ Make a boxplot of `body_weight_g` from `penguins` by `species`
 
 ```{r}
 boxplot(penguins$body_mass_g~penguins$species)
+boxplot(body_mass_g~species,data=penguins)
 
 ```
 
